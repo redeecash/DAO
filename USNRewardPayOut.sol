@@ -5,28 +5,28 @@ contract USNRewardPayOut {
 
      RewardOffer public usnContract;
 
-     function USNRewardPayOut(RewardOffer _usnContract) {
+     constructor(RewardOffer _usnContract) {
           usnContract = _usnContract;
      }
 
      // interface for USN
-     function payOneTimeReward() returns(bool) {
+     function payOneTimeReward() public returns(bool) {
          if (msg.value < usnContract.getDeploymentReward())
-             throw;
+             revert("insufficient deployment reward");
 
          if (usnContract.getOriginalClient().DAOrewardAccount().call.value(msg.value)()) {
              return true;
          } else {
-             throw;
+             revert("payment reward error");
          }
      }
 
      // pay reward
-     function payReward() returns(bool) {
+     function payReward() public returns(bool) {
          if (usnContract.getOriginalClient().DAOrewardAccount().call.value(msg.value)()) {
              return true;
          } else {
-             throw;
+             revert("uanble to pay reward");
          }
      }
 }

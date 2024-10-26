@@ -16,7 +16,7 @@ along with the DAO.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 // TODO: all constants need to be double checked
-import "github.com/slockit/DAO/DAO.sol";
+import "DAO.sol";
 
 contract Withdraw {
     DAO constant public mainDAO = DAO(0xbb9bc244d798123fde783fcc1c72d3bb8c189413);
