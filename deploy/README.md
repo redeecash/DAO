@@ -4,8 +4,11 @@
 
 `prepare.py` compiles `DAO.sol` and populates some helper variables inside `prepare.js`
 
-1. `loadScript("prepare.js")` loads these variables into geth.
-2. `loadScript("deploy.js")` deploys them.
+1. create a virtual environment, python -m venv venv
+2. activate the virtual environment
+3. pip install requirements
+4. `loadScript("prepare.js")` loads these variables into geth.
+5. `loadScript("deploy.js")` deploys them.
 
 ## Example usage
 
@@ -36,7 +39,9 @@ optional arguments:
                         Number of seconds after the voting deadline for which
                         a split proposal is executable
 ```
+
 You can for example call the script with a specifically compiled solc and set the creation to end in 15 mins by doing:
+
 ```
 ./prepare.py --solc ~/ew/solidity/build/solc/solc --creation-duration-mins 15
 ```
